@@ -49,11 +49,23 @@
 //     }
 // }
 
+
+
+
+//Day 4 Cempleted!
+
 package com.edutech.progressive.entity;
 
-import org.hibernate.id.enhanced.AccessCallback;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import org.hibernate.id.enhanced.AccessCallback;
+@Entity
 public class Accounts implements Comparable<Accounts> {
+  @Id
+  @GeneratedValue (strategy = GenerationType.IDENTITY)
   private int accountId;
   private int customerId;
   private double balance;

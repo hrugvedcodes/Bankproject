@@ -4,11 +4,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.edutech.progressive.entity.Customers;
+import org.springframework.stereotype.Service;
 
+import com.edutech.progressive.entity.Customers;
+@Service
 public class CustomerServiceImplArraylist {
 
     private static List<Customers> customersList = new ArrayList<>();
+
+    
+
+    public CustomerServiceImplArraylist() {
+    }
 
     public List<Customers> getAllCustomers() throws SQLException {
         return customersList;
@@ -28,4 +35,14 @@ public class CustomerServiceImplArraylist {
     public void emptyArrayList() {
         customersList.clear();
     }
+      public Customers getCustomerById(int customerId){
+        for (Customers customers : customersList) {
+ 
+            if(customers.getCustomerId()==customerId){
+                return customers;
+            }
+        }
+        return null;
+    }
+    //Till Day 4 completed!
 }
