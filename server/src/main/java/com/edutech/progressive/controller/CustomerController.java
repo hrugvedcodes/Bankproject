@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.edutech.progressive.entity.Customers;
@@ -16,6 +17,7 @@ public class CustomerController {
 
     private final CustomerServiceImplArraylist arraylistService;
     private final CustomerServiceImplJpa jpaService;
+    
 
     public CustomerController(CustomerServiceImplArraylist arraylistService,
                               CustomerServiceImplJpa jpaService) {
@@ -36,8 +38,8 @@ public class CustomerController {
     }
 
     @PostMapping
-    public int addCustomer(@RequestBody Customers customers) throws SQLException {
-        return jpaService.addCustomer(customers);
+    public ResponseEntity<Integer> addCustomer(@RequestBody Customers customers) throws SQLException {
+        return new ResponseEntity<>(jpaService.addCustomer(customers),HttpStatus.CREATED);
     }
 
     @PutMapping("/{customerId}")
